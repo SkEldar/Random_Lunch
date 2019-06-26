@@ -1,0 +1,38 @@
+.background {
+  margin: 0;
+  padding: 0;
+  background: #b6c9c9;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign_in {
+  width: 500px;
+  height: 500px;
+  background: #b6c9c9;
+  color: #58575d;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info {
+  height: 35px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #bd855c;
+  font-size: 20px;
+}
+.get_into {
+  width: 200px;
+  height: 50px;
+  background: #ba5252;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.sign_in a {
+  text-decoration: none;
+  color: #58575d;
+}
