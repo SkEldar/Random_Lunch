@@ -1,19 +1,70 @@
-import React from "react";
+import React, { Component } from "react";
 
-function Sign_in() {
-  return (
-    <div className="background">
-      <div className="sign_in">
-        <h1>Sign in</h1>
-        <input className="info" type="text" placeholder="Login" />
-        <input className="info" type="password" placeholder="password" />
-        <button className="get_into">Sign in</button>
-        <a href="#">
-          <p>don't remember the password?</p>
-        </a>
+class Sign_in extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      valueOfLogin: "",
+      valueOfPassword: ""
+    };
+  }
+  handleChangeOfLogin = event => {
+    this.setState({ valueOfLogin: event.target.value });
+  };
+  handleChangeOfPassword = event => {
+    this.setState({ valueOfPassword: event.target.value });
+  };
+  Req = () => {
+    var url = "http://middleman.ferdinand-muetsch.de/api/messages";
+    console.log(1);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        recipient_token: "be3d2543-4345-4728-a4eb-29b3092db03c",
+        text: this.valueOfLogin,
+        origin: this.valueOfPassword
+      })
+    })
+      .then(function(data) {
+        console.log("Request success: ", data);
+      })
+      .catch(function(error) {
+        console.log("Request failure: ", error);
+      });
+  };
+  render() {
+    console.log(this.state.valueOfLogin);
+    console.log(this.state.valueOfPassword);
+
+    return (
+      <div className="background">
+        <div className="sign_in">
+          <h1>Sign in</h1>
+          <input
+            className="info"
+            value={this.state.valueOfLogin}
+            type="text"
+            placeholder="Login"
+            onChange={this.handleChangeOfLogin}
+          />
+          <input
+            className="info"
+            value={this.state.valueOfPassword}
+            onChange={this.handleChangeOfPassword}
+            type="password"
+            placeholder="password"
+          />
+
+          <button className="get_into" onClick={this.Req}>
+            Sign in
+          </button>
+          <a href="#">
+            <p>don't remember the password?</p>
+          </a>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Sign_in;
