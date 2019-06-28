@@ -15,12 +15,12 @@ class Sign_in extends Component {
     this.setState({ valueOfPassword: event.target.value });
   };
   Req = () => {
-    var url = "http://middleman.ferdinand-muetsch.de/api/messages";
+    var url = "http://localhost:3012/api/sign_in";
     console.log(1);
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
-        recipient_token: "be3d2543-4345-4728-a4eb-29b3092db03c",
+        lol: "kek",
         text: this.valueOfLogin,
         origin: this.valueOfPassword
       })
