@@ -19,14 +19,16 @@ class Sign_in extends Component {
     console.log(1);
     fetch(url, {
       method: "POST",
-      body: {
-        lol: "kek",
-        text: this.valueOfLogin,
-        origin: this.valueOfPassword
-      }
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        login: this.state.valueOfLogin,
+        password: this.state.valueOfPassword
+      })
     })
-      .then(function(data) {
-        console.log("Request success: ", data);
+      .then(function(res) {
+        return res.json();
       })
       .catch(function(error) {
         console.log("Request failure: ", error);
