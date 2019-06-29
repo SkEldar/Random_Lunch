@@ -5,7 +5,8 @@ class Sign_in extends Component {
     super(props);
     this.state = {
       valueOfLogin: "",
-      valueOfPassword: ""
+      valueOfPassword: "",
+      resBack: ""
     };
   }
   handleChangeOfLogin = event => {
@@ -28,7 +29,11 @@ class Sign_in extends Component {
       })
     })
       .then(function(res) {
+        console.log(res.json());
         return res.json();
+      })
+      .then(function(data) {
+        this.setState({ resBack: data.text });
       })
       .catch(function(error) {
         console.log("Request failure: ", error);
@@ -37,7 +42,7 @@ class Sign_in extends Component {
   render() {
     console.log(this.state.valueOfLogin);
     console.log(this.state.valueOfPassword);
-
+    console.log(this.state.resBack);
     return (
       <div className="background">
         <div className="sign_in">
