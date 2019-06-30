@@ -28,14 +28,13 @@ class Sign_in extends Component {
         password: this.state.valueOfPassword
       })
     })
-      .then(function(res) {
-        console.log(res.json());
+      .then(res => {
         return res.json();
       })
-      .then(function(data) {
+      .then(data => {
         this.setState({ resBack: data.text });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log("Request failure: ", error);
       });
   };
@@ -65,9 +64,10 @@ class Sign_in extends Component {
           <button className="get_into" onClick={this.Req}>
             Sign in
           </button>
-          <a href="#">
-            <p>don't remember the password?</p>
+          <a href="http://localhost:3333/">
+            <p>Registration?</p>
           </a>
+          <h1>{this.state.resBack}</h1>
         </div>
       </div>
     );
