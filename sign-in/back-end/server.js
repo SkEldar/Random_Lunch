@@ -38,14 +38,20 @@ app.post("/api/register", function(req, res) {
   });
 });
 app.post("/api/sign_in", function(req, res) {
-  let frontPass = req.params.frontPass;
-  let frontLogin = req.params.frontlogin;
+  let frontPassword = req.body.password;
+  let frontLogin = req.body.login;
+
+  console.log(frontPassword);
   console.log(frontLogin);
-  console.log(frontPass);
-  // db.collection("users").findOne(
-  //   { login: frontLogin, password: frontPass },
-  //   function(err, doc) {}
-  // );
+  db.collection("users").findOne(
+    { frontNickname: frontLogin, frontPass: frontPassword },
+    function(err, doc) {
+      if (err) {
+        return res.sendStatus(500);
+      }
+      console.log("zaebymba");
+    }
+  );
 });
 // var frontPassword = req.params.password;
 // var frontLogin = req.params.login;
