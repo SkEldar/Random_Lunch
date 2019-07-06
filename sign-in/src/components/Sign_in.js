@@ -16,7 +16,7 @@ class Sign_in extends Component {
     this.setState({ valueOfPassword: event.target.value });
   };
   Req = () => {
-    var url = "http://localhost:3012/api/sign_in";
+    let url = "http://localhost:3012/api/sign_in";
     console.log(1);
     fetch(url, {
       method: "POST",
