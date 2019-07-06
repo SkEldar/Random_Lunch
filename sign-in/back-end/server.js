@@ -28,30 +28,49 @@ app.post("/api/register", function(req, res) {
     console.log(user);
   });
 });
+// app.post("/api/sign_in", function(req, res) {
+//   let frontPassword = req.body.password;
+//   let frontLogin = req.body.login;
+
+//   console.log(frontLogin);
+//   console.log(frontPassword);
+
+//   db.collection("users").findOne(
+//     { frontNickname: frontLogin, frontPass: frontPassword },
+//     function(err, doc) {
+//       if (err) {
+//         return res.sendStatus(500);
+//       }
+//       if (frontPass == frontPassword && frontNickname == frontLogin) {
+//         res.json({
+//           text: "vse zaebymba"
+//         });
+//       } else {
+//         res.json({
+//           text: "ne zaebymba"
+//         });
+//       }
+//     }
+//   );
+// });
+let info = {
+  login: "eldar",
+  password: "qwerty1"
+};
 app.post("/api/sign_in", function(req, res) {
-  let frontPassword = req.body.password;
-  let frontLogin = req.body.login;
-
-  console.log(frontLogin);
-  console.log(frontPassword);
-
-  db.collection("users").findOne(
-    { frontNickname: frontLogin, frontPass: frontPassword },
-    function(err, doc) {
-      if (err) {
-        return res.sendStatus(500);
-      }
-      if (frontPass == frontPassword && frontNickname == frontLogin) {
-        res.json({
-          text: "vse zaebymba"
-        });
-      } else {
-        res.json({
-          text: "ne zaebymba"
-        });
-      }
-    }
-  );
+  var frontPassword = req.body.password;
+  var frontLogin = req.body.login;
+  var backPassword = info.password;
+  var backLogin = info.login;
+  if (frontPassword == backPassword && frontLogin == backLogin) {
+    res.json({
+      text: "successful"
+    });
+  } else {
+    res.json({
+      text: "login / password incorrect"
+    });
+  }
 });
 
 MongoClient.connect("mongodb://localhost:27017/info", function(err, database) {
