@@ -61,7 +61,6 @@ hr {
   height: 25px;
   width: 625px;
   text-align: center;
-  font-size: 16px;
   background: #fff;
   border-color: black;
   border-radius: 5px;
@@ -75,4 +74,9 @@ hr {
 }
 .chat p {
   text-align: center;
+}
+@media only screen and (max-height: 700px) {
+  .messenger {
+    background: red;
+  }
 }
